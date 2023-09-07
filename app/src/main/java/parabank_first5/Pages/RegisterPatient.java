@@ -7,8 +7,8 @@ import org.openqa.selenium.support.ui.Select;
 
 public class RegisterPatient extends BasePage{
 
-    By firstName = By.id("fr3981-field");
-    By familyName = By.id("fr4267-field");
+    By firstName = By.name("givenName");
+    By familyName = By.name("familyName");
     By nextButton = By.id("next-button");
     By gender = By.cssSelector("#gender-field > option:nth-child(1)");
     By date = By.id("birthdateDay-field");
@@ -16,7 +16,7 @@ public class RegisterPatient extends BasePage{
     By year = By.id("birthdateYear-field");
     By address1 = By.id("address1");
     By address2 = By.id("address2");
-    By phoneNumber = By.id("fr4628-field");
+    By phoneNumber = By.name("phoneNumber");
     WebElement relationshipType = webDriver.findElement(By.id("relationship_type"));
     By personRelatedToPatient = By.xpath("//*[@id=\"relationship\"]/p[2]/input[1]");
     By confirmButton = By.id("submit");
@@ -33,7 +33,7 @@ public class RegisterPatient extends BasePage{
 
         pageActions.type(date,"9");
         Select select = new Select(month);
-        select.selectByValue("February");
+        select.selectByIndex(2);
         pageActions.type(year,"2010");
         pageActions.click(nextButton);
 
@@ -45,7 +45,7 @@ public class RegisterPatient extends BasePage{
         pageActions.click(nextButton);
 
         Select select1 = new Select(relationshipType);
-        select1.selectByValue("Supervisor");
+        select1.selectByIndex(3);
         pageActions.type(personRelatedToPatient,"pqrst");
         pageActions.click(nextButton);
 

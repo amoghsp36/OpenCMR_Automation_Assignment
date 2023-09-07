@@ -16,7 +16,8 @@ public class PageActions{
         pageWaits.waitForElementToBePresent(by).click();
     }
     public void type(By by,String text){
-        webDriver.findElement(by).sendKeys(text);
+        pageWaits.waitForElementToBeVisible(by).sendKeys(text);
+        //webDriver.findElement(by).sendKeys(text);
     }
     public void navigateTo(String url){
         webDriver.get(url);

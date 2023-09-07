@@ -18,4 +18,7 @@ public class PageWaits{
     public WebElement waitForElementToBePresent(By by){
         return wait.until(ExpectedConditions.elementToBeClickable(by));
     }
+    public WebElement waitForElementToBeVisible(By by){
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+    }
 }

@@ -3,6 +3,8 @@
  */
 package parabank_first5;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 import static org.testng.Assert.*;
 
@@ -10,5 +12,6 @@ public class AppTest {
     @Test public void appHasAGreeting() {
         App classUnderTest = new App();
         assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
+        WebDriver webDriver = new ChromeDriver();
     }
 }

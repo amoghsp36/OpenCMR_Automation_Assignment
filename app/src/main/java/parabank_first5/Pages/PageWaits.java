@@ -13,12 +13,15 @@ public class PageWaits{
     private WebDriverWait wait;
     public PageWaits(WebDriver webDriver){
         this.webDriver=webDriver;
-        this.wait=new WebDriverWait(webDriver, Duration.ofSeconds(2));
+        this.wait=new WebDriverWait(webDriver, Duration.ofSeconds(5));
     }
     public WebElement waitForElementToBePresent(By by){
         return wait.until(ExpectedConditions.elementToBeClickable(by));
     }
     public WebElement waitForElementToBeVisible(By by){
         return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+    }
+    public WebElement waitForElementToBeVisibleWithClear(WebElement by){
+        return wait.until(ExpectedConditions.visibilityOf(by));
     }
 }

@@ -19,6 +19,10 @@ public class PageActions{
         pageWaits.waitForElementToBeVisible(by).sendKeys(text);
         //webDriver.findElement(by).sendKeys(text);
     }
+    public void clearAndType(WebElement by,String text){
+        pageWaits.waitForElementToBeVisibleWithClear(by).clear();
+        pageWaits.waitForElementToBeVisibleWithClear(by).sendKeys(text);
+    }
     public void navigateTo(String url){
         webDriver.get(url);
     }

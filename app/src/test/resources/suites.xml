@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TestSuite">
+    <test name="GroupedTests">
+        <groups>
+            <run>
+                <!-- Specify the names of the test groups you want to include -->
+                <include name="sanity" />
+                <!--<include name="group2" />-->
+            </run>
+        </groups>
+        <classes>
+            <!-- Add test classes to the test -->
+            <class name="parabank_first5.Tests.AllTests" />
+        </classes>
+    </test>
+</suite>

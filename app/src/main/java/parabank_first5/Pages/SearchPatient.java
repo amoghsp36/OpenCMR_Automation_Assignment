@@ -19,12 +19,10 @@ public class SearchPatient extends BasePage{
     }
     public String getVisitDetails(){
         WebElement recentVisit = webDriver.findElement(By.cssSelector("#coreapps-fr776 > div.info-body > visitbyencountertype > ul > li:nth-child(1) > a"));
-        String visitDate = recentVisit.getText();
-        return visitDate;
+        return recentVisit.getText();
     }
     public String getTempDetails(){
         WebElement patientTemp = webDriver.findElement(By.cssSelector("#temperature > span.value"));
-        String temp = patientTemp.getText();
-        return temp;
+        return patientTemp.getText();
     }
 }

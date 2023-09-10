@@ -8,6 +8,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import parabank_first5.Drivers.ChromeDriverCreation;
+import parabank_first5.Drivers.DriverCreator;
 import parabank_first5.Pages.*;
 
 public class AllTests {
@@ -23,22 +24,25 @@ public class AllTests {
     public void setUp(){
         WebDriverManager.chromedriver().setup();
         webDriver = new ChromeDriver();
+//        String browser = "chrome";
+//        WebDriver webDriver=new DriverCreator().create(browser);
         login = new Login(webDriver);
         operationsPage = new OperationsPage(webDriver);
         searchPatient = new SearchPatient(webDriver);
         privileges = new Privileges(webDriver);
         //appointment = new Appointment(webDriver);
     }
-    @Test
+    @Test(groups = "sanity")
     public void shouldLogin() throws InterruptedException {
         //Arrange
+        //WebDriver webDriver = new ChromeDriver();
         PageActions pageActions = new PageActions(webDriver);
         pageActions.navigateTo("https://demo.openmrs.org/");
         //Act
         login.patientLogin();
         Thread.sleep(2000);
     }
-    @Test
+    @Test(groups = "sanity")
     public void shouldRegisterPatient() throws InterruptedException {
         //Arrange
         shouldLogin();
@@ -48,7 +52,7 @@ public class AllTests {
         registerPatient.formFillOut();
     }
 
-    @Test
+    @Test(groups = "regression")
     public void shouldSearchForPatient() throws InterruptedException {
         //Arrange
         shouldLogin();
@@ -62,7 +66,7 @@ public class AllTests {
         Assert.assertEquals(searchPatient.getTempDetails(),pTemp);
     }
 
-    @Test
+    @Test(groups = "regression")
     public void shouldManagePrivileges() throws InterruptedException {
         //Arrange
         shouldLogin();
@@ -72,11 +76,11 @@ public class AllTests {
         privileges.addPrivileges();
         privileges.searchPrivileges();
         //Assert
-        Assert.assertEquals(privileges.assertionSelectors(),"Add Encounters","The added privilege name does not match");
+        Assert.assertEquals(privileges.assertionSelectors(),"Add Patient Programs","The added privilege name does not match");
 
     }
 
-    @Test
+    @Test(groups = "regression")
     public void shouldScheduleAppointments() throws InterruptedException {
         //Arrange
         shouldLogin();

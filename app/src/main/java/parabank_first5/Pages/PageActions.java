@@ -26,4 +26,7 @@ public class PageActions{
     public void navigateTo(String url){
         webDriver.get(url);
     }
+    public void navigateToHome(){
+        webDriver.get("https://demo.openmrs.org/openmrs/referenceapplication/home.page");
+    }
 }

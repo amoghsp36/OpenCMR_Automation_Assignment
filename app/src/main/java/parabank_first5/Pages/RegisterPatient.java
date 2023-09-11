@@ -3,7 +3,11 @@ package parabank_first5.Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class RegisterPatient extends BasePage{
 
@@ -20,6 +24,8 @@ public class RegisterPatient extends BasePage{
     WebElement relationshipType = webDriver.findElement(By.id("relationship_type"));
     By personRelatedToPatient = By.xpath("//*[@id=\"relationship\"]/p[2]/input[1]");
     By confirmButton = By.id("submit");
+    By addressVerification = By.id("patient-header-contactInfo");
+
     public RegisterPatient(WebDriver webDriver){
         super(webDriver);
     }
@@ -51,6 +57,21 @@ public class RegisterPatient extends BasePage{
 
         pageActions.click(confirmButton);
         return new RegisterPatient(webDriver);
+    }
+    public String patientDetails(){
+        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(3));
+        WebElement firstName = webDriver.findElement(By.className("PersonName-givenName"));
+        wait.until(ExpectedConditions.visibilityOf(firstName));
+        return firstName.getText();
+    }
+    public void patientContactInfo(){
+        pageActions.click(addressVerification);
+    }
+    public String pnoVerification(){
+        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(3));
+        WebElement pho = webDriver.findElement(By.id("coreapps-telephoneNumber"));
+        wait.until(ExpectedConditions.visibilityOf(pho));
+        return pho.getText();
     }
 
 }

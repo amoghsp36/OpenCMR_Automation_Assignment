@@ -21,15 +21,15 @@ public class Appointment extends BasePage{
     }
     public Appointment addNewServiceType() throws InterruptedException {
         pageActions.click(newService);
-        pageActions.type(serviceName,"qwer");
+        pageActions.type(serviceName,"cancer service");
         pageActions.type(serviceDuration,"45");
-        pageActions.type(serviceDescription,"curing aids in just 45 min");
+        pageActions.type(serviceDescription,"curing cancer in just 45 min");
         pageActions.click(save);
         pageWaits.waitForElementToBeVisible(title);
         return new Appointment(webDriver);
     }
     public String getDuration(){
-        WebElement time = webDriver.findElement(By.cssSelector("#appointmentTypesTable > tbody > tr:nth-child(1) > td:nth-child(2)"));
+        WebElement time = webDriver.findElement(By.xpath("//td[contains(text(),'qwer')]"));
         pageWaits.waitForElementToBeVisibleWithClear(time);
         return time.getText();
     }
@@ -41,5 +41,7 @@ public class Appointment extends BasePage{
         Thread.sleep(3000);
         return serviceDuration.getText();
     }
+
+
 }
 //#appointmentTypesTable > tbody > tr:nth-child(7) > td:nth-child(2) duration-field div

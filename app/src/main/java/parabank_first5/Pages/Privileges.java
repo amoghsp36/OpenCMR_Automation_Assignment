@@ -33,8 +33,9 @@ public class Privileges extends BasePage{
         return new Privileges(webDriver);
     }
     public String assertionSelectors(){
-        WebElement privilegeName = webDriver.findElement(By.cssSelector("#list-privileges > tbody > tr:nth-child(4) > td:nth-child(1)"));
-        String getName = privilegeName.getText();
-        return getName;
+        String assertText = "Add Observations";
+        WebElement prevName = webDriver.findElement(By.xpath("//td[contains(text(),'Add Observations')]"));
+        //WebElement privilegeName = webDriver.findElement(By.cssSelector("#list-privileges > tbody > tr:nth-child(4) > td:nth-child(1)"));
+        return prevName.getText();
     }
 }

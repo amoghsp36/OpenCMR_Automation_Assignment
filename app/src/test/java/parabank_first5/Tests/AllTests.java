@@ -25,7 +25,6 @@ public class AllTests {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("start-maximized");
         webDriver = new ChromeDriver(chromeOptions);
-//        String browser = "chrome";
 //        WebDriver webDriver=new DriverCreator().create(browser);
         login = new Login(webDriver);
         operationsPage = new OperationsPage(webDriver);
@@ -98,7 +97,7 @@ public class AllTests {
         appointment.goToServices();
         appointment.addNewServiceType();
         //Assert
-        Assert.assertEquals(appointment.getDuration(),"qwer");
+        Assert.assertEquals(appointment.getDuration(),"cancer ");
         Assert.assertFalse(appointment.getDuration().equals(appointment.editDuration()));
         PageActions pageActions = new PageActions(webDriver);
         pageActions.navigateToHome();

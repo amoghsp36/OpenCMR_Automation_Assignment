@@ -21,7 +21,7 @@ public class Appointment extends BasePage{
     }
     public Appointment addNewServiceType() throws InterruptedException {
         pageActions.click(newService);
-        pageActions.type(serviceName,"cancer service");
+        pageActions.type(serviceName,"cancer ");
         pageActions.type(serviceDuration,"45");
         pageActions.type(serviceDescription,"curing cancer in just 45 min");
         pageActions.click(save);
@@ -29,7 +29,7 @@ public class Appointment extends BasePage{
         return new Appointment(webDriver);
     }
     public String getDuration(){
-        WebElement time = webDriver.findElement(By.xpath("//td[contains(text(),'qwer')]"));
+        WebElement time = webDriver.findElement(By.xpath("//td[contains(text(),'nullcancer')]"));
         pageWaits.waitForElementToBeVisibleWithClear(time);
         return time.getText();
     }
